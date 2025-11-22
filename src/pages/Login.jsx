@@ -1,32 +1,25 @@
-import React, { useContext, useState } from 'react'
+import React, { useState } from 'react'
+import { supabase } from '../supabase'
 import { useNavigate } from 'react-router-dom'
-import { SupabaseContext } from '../supabase'
 
 export default function Login(){
-  const supabase = useContext(SupabaseContext)
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const navigate = useNavigate()
 
-  async function handleLogin(e){
-    e.preventDefault()
-    const { error } = await supabase.auth.signInWithPassword({email, password})
-    if(error){ alert(error.message); return }
+  async function handle(){
+    const { error } = await supabase.auth.signInWithPassword({ email, password })
+    if(error){ alert('Invalid login credentials'); return }
     navigate('/dashboard')
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center">
-      <div className="w-full max-w-md p-8 border rounded shadow">
-        <div className="flex items-center justify-center mb-6">
-          <img src="/logo.png" alt="logo" className="h-20" />
-        </div>
-        <h2 className="text-xl font-semibold mb-4">Acesse o Painel</h2>
-        <form onSubmit={handleLogin} className="space-y-4">
-          <input className="w-full p-3 border rounded" placeholder="E-mail" value={email} onChange={e=>setEmail(e.target.value)} />
-          <input type="password" className="w-full p-3 border rounded" placeholder="Senha" value={password} onChange={e=>setPassword(e.target.value)} />
-          <button className="w-full p-3 bg-isprotecBlue text-white rounded">Entrar</button>
-        </form>
+    <div className="min-h-screen flex items-center justify-center p-6">
+      <div className="max-w-md w-full bg-white p-6 rounded shadow">
+        <h1 className="text-2xl font-bold mb-4">ISPROTEC ASSISTÊNCIA</h1>
+        <input value={email} onChange={e=>setEmail(e.target.value)} placeholder="Email" className="w-full p-2 border mb-2" />
+        <input value={password} onChange={e=>setPassword(e.target.value)} type="password" placeholder="Senha" className="w-full p-2 mb-4 border" />
+        <button onClick={handle} className="w-full bg-blue-600 text-white p-2 rounded">Entrar</button>
       </div>
     </div>
   )
