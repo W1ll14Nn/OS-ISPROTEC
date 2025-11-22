@@ -1,7 +1,8 @@
 {
   "name": "isprotec-frontend",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": true,
+  "type": "commonjs",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -14,10 +15,10 @@
     "@supabase/supabase-js": "2.34.0"
   },
   "devDependencies": {
-  "vite": "5.4.21",
-  "tailwindcss": "3.3.5",
-  "postcss": "8.4.24",
-  "autoprefixer": "10.4.14",
-  "@vitejs/plugin-react": "latest"
+    "vite": "5.4.21",
+    "tailwindcss": "3.3.5",
+    "postcss": "8.4.24",
+    "autoprefixer": "10.4.14",
+    "@vitejs/plugin-react": "^4.0.0"
+  }
 }
-
