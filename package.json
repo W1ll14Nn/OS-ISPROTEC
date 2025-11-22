@@ -1,8 +1,8 @@
 {
-  "name": "isprotec-frontend",
-  "version": "1.0.1",
+  "name": "isprotec-frontend-new",
+  "version": "1.0.0",
   "private": true,
-  "type": "commonjs",
+  "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
